@@ -1,1 +1,10 @@
-<app-basic-component />
+content_copy
+<h1>Router</h1>
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<nav>
+  <ul>
+    <li><a routerLink="/basic-component" routerLinkActive="active" ariaCurrentWhenActive="page">Basic Component</a></li>
+    <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
