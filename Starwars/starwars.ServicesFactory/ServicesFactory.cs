@@ -22,6 +22,7 @@ public class ServicesFactory
                     
             // Lo hago scoped ya que este manager maneja estado, tiene el currentUser
             serviceCollection.AddScoped<ISessionService, SessionService>();
+            serviceCollection.AddScoped<IUserService, UserService>();
             serviceCollection.AddScoped<ICharacterService, CharacterService>();
         }
 }

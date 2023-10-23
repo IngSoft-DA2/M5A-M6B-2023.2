@@ -19,9 +19,9 @@ namespace starwars.WebApi.Controllers
         }
         
         [HttpPost]
-        public IActionResult Login([FromBody] UserCreateModel userCreateModel)
+        public IActionResult Login([FromBody] UserLoginModel userLoginModel)
         {
-            var token = _sessionService.Authenticate(userCreateModel.Email, userCreateModel.Password);
+            var token = _sessionService.Authenticate(userLoginModel.Email, userLoginModel.Password);
             return Ok(new { token = token });
         }
 
