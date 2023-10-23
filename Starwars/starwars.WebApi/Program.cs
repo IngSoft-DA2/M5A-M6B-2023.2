@@ -20,6 +20,7 @@ var servicesFactory = new ServicesFactory();
 servicesFactory.RegistrateServices(builder.Services);
 
 var app = builder.Build();
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

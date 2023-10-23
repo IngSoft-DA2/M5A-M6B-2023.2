@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using starwars.IBusinessLogic;
 using starwars.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 namespace starwars.ServicesFactory;
 
@@ -24,5 +25,17 @@ public class ServicesFactory
             serviceCollection.AddScoped<ISessionService, SessionService>();
             serviceCollection.AddScoped<IUserService, UserService>();
             serviceCollection.AddScoped<ICharacterService, CharacterService>();
+
+            serviceCollection.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder
+                        .WithOrigins("http://localhost:4200") 
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
         }
 }
