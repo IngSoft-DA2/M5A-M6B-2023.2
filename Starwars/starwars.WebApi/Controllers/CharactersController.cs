@@ -32,6 +32,13 @@ public class CharactersController : ControllerBase
         return Ok(characterResponseModel);
     }
 
+    [HttpDelete("{id}")]
+    public IActionResult DeleteCharacterById([FromRoute] int id)
+    {
+        _characterService.DeleteCharacter(id);
+        return Ok();
+    }
+
     [HttpPost]
     public IActionResult InsertCharacter([FromBody] CharacterCreateModel newCharacter)
     {

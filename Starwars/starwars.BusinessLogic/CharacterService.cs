@@ -20,6 +20,7 @@ namespace starwars.BusinessLogic
         {
             Character character = GetCharacterById(id);
             _repository.Delete(character);
+            _repository.Save();
         }
 
         public Character GetCharacterById(int id)
