@@ -26,7 +26,7 @@ export class CharactersService {
   public getCharacters(): Observable<Character[]> {
     const headers = new HttpHeaders();
     headers.append('token', 'ewrwetrwe');
-    return this._http.get<Character[]>(`${environment.API_HOST_URL}/characters`, {headers}).pipe(
+    return this._http.get<Character[]>(`characters`, {headers}).pipe(
       tap((characters: Character[]) => this._charactersBehaviorSubject$.next(characters)),
     );
   }
