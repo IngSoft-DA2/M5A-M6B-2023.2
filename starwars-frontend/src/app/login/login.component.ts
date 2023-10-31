@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  numberList = [1,2,3,4,5]
   constructor(
     private _userService: UsersService,
     private _route: ActivatedRoute,
@@ -15,12 +16,9 @@ export class LoginComponent {
 
   ngOnInit(): void {}
 
-  isLoggedIn(): boolean {
-    return localStorage.getItem('userInfo') != null;
-  }
-
   login() {
-    this._userService.login().subscribe((data) => {
+    this._userService.login()
+    .subscribe((data) => {
       console.log('userInfo', data);
       this.saveUserInfo(
         JSON.stringify({token: data.token })
@@ -37,7 +35,12 @@ export class LoginComponent {
     });
   }
 
+  isLoggedIn(): boolean {
+    return localStorage.getItem('userInfo') != null;
+  }
+
   logout() {
+    // localStorage.clear()
     localStorage.removeItem('userInfo');
   }
 

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router'; // CLI imports router
+import { Routes, RouterModule } from '@angular/router'; 
 import { SecondComponentComponent } from './second-component/second-component.component';
 import { BasicComponentComponent } from './basic-component/basic-component.component';
 import { LoginComponent } from './login/login.component';
