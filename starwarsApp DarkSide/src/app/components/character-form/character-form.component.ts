@@ -16,9 +16,9 @@ import { CHARACTER_LIST_URL } from '../../utils/routes';
 export class CharacterFormComponent implements OnInit {
 
   public characterForm = new FormGroup({
-    name: new FormControl(undefined, [Validators.required, ValidateString]),
-    description: new FormControl(undefined, [Validators.required, ValidateString]),
-    imageurl: new FormControl(undefined)
+    name: new FormControl('', [Validators.required, ValidateString])!,
+    description: new FormControl('', [Validators.required, ValidateString]),
+    imageurl: new FormControl('')
   });
 
   public isEditing = false;
@@ -67,9 +67,9 @@ export class CharacterFormComponent implements OnInit {
 
   private createCharacter(): void {
     const character: ICreateCharacter = {
-      name: this.characterForm.value.name,
-      description: this.characterForm.value.description,
-      imageurl: this.characterForm.value.imageurl,
+      name: this.characterForm.value.name!, // Si sabemos que nunca va a ser null o undefined usamos el simbolo '!'.
+      description: this.characterForm.value.description!,
+      imageurl: this.characterForm.value.imageurl ?? "", // utilizamos ?? "" para tener un valor por defecto en caso que sea null o undefined.
     };
     this._charactersService.postCharacter(character)
     .pipe(
@@ -92,9 +92,9 @@ export class CharacterFormComponent implements OnInit {
     if(!!this.characterId) {
       const character = new Character(
         this.characterId as number,
-        this.characterForm.value.name,
-        this.characterForm.value.description,
-        this.characterForm.value.imageurl,
+        this.characterForm.value.name ?? "",
+        this.characterForm.value.description ?? "",
+        this.characterForm.value.imageurl ?? "",
       );
       this._charactersService.putCharacter(character)
       .pipe(
@@ -120,8 +120,8 @@ export class CharacterFormComponent implements OnInit {
   }
 
   private cleanForm(): void {
-    this.name?.setValue(undefined);
-    this.description?.setValue(undefined);
-    this.imageurl?.setValue(undefined);
+    this.name?.setValue('');
+    this.description?.setValue('');
+    this.imageurl?.setValue('');
   }
 }
