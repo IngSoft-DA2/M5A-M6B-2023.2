@@ -20,6 +20,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
 import { APIInterceptor } from './interceptors/api.interceptor';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { APIInterceptor } from './interceptors/api.interceptor';
     BackButtonComponent,
     LoaderComponent,
     AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

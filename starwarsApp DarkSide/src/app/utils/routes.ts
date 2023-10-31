@@ -8,6 +8,11 @@ export enum SEGMENTS {
     NEW = 'new',
 }
 
+export enum AUTH {
+    LOGIN = 'login',
+}
+
+
 const idParam = ':id'
 
 export const CHARACTER_LIST_URL = PATHS.CHARACTERS;
@@ -22,3 +27,6 @@ export const getCharacterFormUrl = (id: string | number): string => {
 export const ADD_CHARACTER_URL = getCharacterFormUrl(SEGMENTS.NEW);
 
 export const ADMIN_URL = PATHS.ADMIN;
+
+export const LOGIN_URL = AUTH.LOGIN;
+
