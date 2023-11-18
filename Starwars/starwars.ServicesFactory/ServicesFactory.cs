@@ -25,13 +25,14 @@ public class ServicesFactory
             serviceCollection.AddScoped<ISessionService, SessionService>();
             serviceCollection.AddScoped<IUserService, UserService>();
             serviceCollection.AddScoped<ICharacterService, CharacterService>();
+            serviceCollection.AddScoped<IPromotionService, PromotionService>();
 
-            serviceCollection.AddCors(options =>
+        serviceCollection.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>
                 {
                     builder
-                        .WithOrigins("http://localhost:4200") 
+                        .WithOrigins("http://localhost:8080") 
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
