@@ -12,8 +12,14 @@ import {
 })
 export class BasicComponentComponent {
   response = 'a response';
+  numbers = [1,2,3,4]
+  isCheckboxDisabled = true;
+
   constructor(private http: HttpClient) {}
 
+  isDisabled (number: number) {
+    return number === 2
+  }
   createPerson() {
     const postData = {
       name: 'John Doe',

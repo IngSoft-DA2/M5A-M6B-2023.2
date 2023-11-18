@@ -19,6 +19,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
+import { APIInterceptor } from './interceptors/api.interceptor';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { RoleGuard } from './guards/role.guard';
     BackButtonComponent,
     LoaderComponent,
     AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,11 @@ import { RoleGuard } from './guards/role.guard';
   providers: [
     CharactersService,
     LoadingService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: APIInterceptor,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
