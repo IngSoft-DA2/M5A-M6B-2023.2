@@ -32,7 +32,7 @@ public class ServicesFactory
                 options.AddDefaultPolicy(builder =>
                 {
                     builder
-                        .WithOrigins("http://localhost:8080") 
+                        .WithOrigins("http://localhost:8080", "http://localhost:4200") 
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
